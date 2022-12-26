@@ -77,5 +77,6 @@ public class Car {
                 ", год производства  " + productionYear +
                 ", сборка'" + productionCountry + '\'' +
                 '}';
+
     }
 }
