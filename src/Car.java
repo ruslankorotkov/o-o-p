@@ -1,24 +1,27 @@
 public class Car {
-    String brand;
-    String model;
+    final String brand;
+    final String model;
     double engineVolume;
     String color;
-    int productionYear;
-    String productionCountry;
+    final int productionYear;
+    final String productionCountry;
+    String transmission;
+    final String bodyType;
+    String registrationNumber;
+    final String numberOfSeats;
+    Car(String brand, String model, String productionCountry, double engineVolume, int productionYear, String color,String transmission,String bodyType,String registrationNumber,String numberOfSeats) {
 
-    Car(String brand, String model, String productionCountry, double engineVolume, int productionYear, String color) {
-
-        if (brand == null || brand == "") {
+        if (brand == null || brand.isEmpty() || brand.isBlank()) {
             this.brand = "default";
         } else {
             this.brand = brand;
         }
-        if (model == null || model == "") {
+        if (model == null || model.isEmpty() || model.isBlank()) {
             this.model = "default";
         } else {
             this.model = model;
         }
-        if (productionCountry == null || productionCountry == "") {
+        if (productionCountry == null || productionCountry.isEmpty() || productionCountry.isBlank()) {
             this.productionCountry = "default";
         } else {
             this.productionCountry = productionCountry;
@@ -29,7 +32,7 @@ public class Car {
         } else {
             this.productionYear = productionYear;
         }
-        if (color == null || color == "") {
+        if (color == null || color.isEmpty() || color.isBlank()) {
             this.color = "белый";
         } else {
             this.color = color;
@@ -40,6 +43,26 @@ public class Car {
         } else {
             this.engineVolume = engineVolume;
 
+        }
+        if (bodyType == null || bodyType.isEmpty() || bodyType.isBlank()){
+            this.bodyType = "default";
+        }else{
+            this.bodyType = bodyType;
+        }
+        if (registrationNumber == null || registrationNumber.isEmpty() || registrationNumber.isBlank()){
+            this.registrationNumber = "default";
+        }else{
+            this.registrationNumber = registrationNumber;
+        }
+        if (transmission == null || transmission.isEmpty() || transmission.isBlank()) {
+            this.transmission = "default";
+        }else{
+            this.transmission = transmission;
+        }
+        if (numberOfSeats == null || numberOfSeats.isEmpty() || numberOfSeats.isBlank()){
+            this.numberOfSeats = "default";
+        }else{
+            this.numberOfSeats = numberOfSeats;
         }
     }
 
@@ -67,16 +90,33 @@ public class Car {
         return productionCountry;
     }
 
+    public String getBodyType() {
+        return bodyType;
+    }
+    public void setEngineVolume(double engineVolume) {
+        this.engineVolume = engineVolume;
+    }
+
+    public String getNumberOfSeats() {
+        return numberOfSeats;
+    }
+    public void setColor(String color) {
+        this.color = color;
+    }
+
     @Override
     public String toString() {
-        return "Automobile{" +
-                "бренд'" + brand + '\'' +
-                ", модель'" + model + '\'' +
-                ", объем двигателя в литрах " + engineVolume +
-                ", цвет кузова '" + color + '\'' +
-                ", год производства  " + productionYear +
-                ", сборка'" + productionCountry + '\'' +
+        return "Car{" +
+                " Марка '" + brand + '\'' +
+                ", Модель '" + model + '\'' +
+                ", Объем двигателя в литрах " + engineVolume +
+                ", Цвет кузова '" + color + '\'' +
+                ", Год производства " + productionYear +
+                ", Страна сборки '" + productionCountry + '\'' +
+                ", Коробка передач '" + transmission + '\'' +
+                ", Тип кузова '" + bodyType + '\'' +
+                ", Регистрационный номер '" + registrationNumber + '\'' +
+                ", Количество мест '" + numberOfSeats + '\'' +
                 '}';
-
     }
 }
