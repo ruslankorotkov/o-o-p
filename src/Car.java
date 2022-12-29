@@ -1,15 +1,38 @@
+import java.time.LocalDate;
+
 public class Car {
-    final String brand;
-    final String model;
-    double engineVolume;
-    String color;
-    final int productionYear;
-    final String productionCountry;
-    String transmission;
-    final String bodyType;
-    String registrationNumber;
-    final String numberOfSeats;
-    Car(String brand, String model, String productionCountry, double engineVolume, int productionYear, String color,String transmission,String bodyType,String registrationNumber,String numberOfSeats) {
+    private final String brand;
+    private final String model;
+    private double engineVolume;
+    private String color;
+    private final int productionYear;
+    private final String productionCountry;
+    private String transmission;
+    private final String bodyType;
+    private String registrationNumber;
+    private final String numberOfSeats;
+    public static class Key{
+        private String remoteEngineStart;
+        private String keylessEntry;
+        public String getRemoteEngineStart() {
+            return remoteEngineStart;
+        }
+
+        public void setRemoteEngineStart(String remoteEngineStart) {
+            this.remoteEngineStart = remoteEngineStart;
+        }
+
+        public String getKeylessEntry() {
+            return keylessEntry;
+        }
+
+        public void setKeylessEntry(String keylessEntry) {
+            this.keylessEntry = keylessEntry;
+        }
+    }
+
+
+    public Car(String brand, String model, String productionCountry, double engineVolume, int productionYear, String color,String transmission,String bodyType,String registrationNumber,String numberOfSeats) {
 
         if (brand == null || brand.isEmpty() || brand.isBlank()) {
             this.brand = "default";
@@ -118,5 +141,12 @@ public class Car {
                 ", Регистрационный номер '" + registrationNumber + '\'' +
                 ", Количество мест '" + numberOfSeats + '\'' +
                 '}';
+    }
+    void changeTiresToSeasonal(){
+        if ( LocalDate.now().getMonthValue() > 3 && LocalDate.now().getMonthValue() < 11){
+            System.out.println("летняя резина");
+        }else{
+            System.out.println( "зимняя резина");
+        }
     }
 }

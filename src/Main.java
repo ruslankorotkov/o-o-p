@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 public class Main {
     public static void main(String[] args){
         Car lada = new  Car("Lada","Granta","в России",1.7,2015,"желтый","" ,"" ,"" ,"");
@@ -10,6 +12,8 @@ public class Main {
         System.out.println(bmv);
         System.out.println(kia);
         System.out.println(Hyundai);
+        System.out.println(LocalDate.now().getMonthValue());
+        lada.changeTiresToSeasonal();
 
     }
 }
