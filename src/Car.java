@@ -11,9 +11,25 @@ public class Car {
     private final String bodyType;
     private String registrationNumber;
     private final String numberOfSeats;
-    public static class Key{
+    private Key key;
+
+    public static class Key {
         private String remoteEngineStart;
         private String keylessEntry;
+
+        public Key(String remoteEngineStart, String keylessEntry) {
+            if (remoteEngineStart == null || remoteEngineStart.isEmpty() || remoteEngineStart.isBlank()) {
+                this.remoteEngineStart = "default";
+            } else {
+                this.remoteEngineStart = remoteEngineStart;
+            }
+            if (keylessEntry == null || keylessEntry.isEmpty() || keylessEntry.isBlank()) {
+                this.keylessEntry = "default";
+            } else {
+                this.keylessEntry = keylessEntry;
+            }
+        }
+
         public String getRemoteEngineStart() {
             return remoteEngineStart;
         }
@@ -31,8 +47,7 @@ public class Car {
         }
     }
 
-
-    public Car(String brand, String model, String productionCountry, double engineVolume, int productionYear, String color,String transmission,String bodyType,String registrationNumber,String numberOfSeats) {
+    public Car(String brand, String model, String productionCountry, double engineVolume, int productionYear, String color, String transmission, String bodyType, String registrationNumber, String numberOfSeats) {
 
         if (brand == null || brand.isEmpty() || brand.isBlank()) {
             this.brand = "default";
@@ -67,24 +82,24 @@ public class Car {
             this.engineVolume = engineVolume;
 
         }
-        if (bodyType == null || bodyType.isEmpty() || bodyType.isBlank()){
+        if (bodyType == null || bodyType.isEmpty() || bodyType.isBlank()) {
             this.bodyType = "default";
-        }else{
+        } else {
             this.bodyType = bodyType;
         }
-        if (registrationNumber == null || registrationNumber.isEmpty() || registrationNumber.isBlank()){
+        if (registrationNumber == null || registrationNumber.isEmpty() || registrationNumber.isBlank()) {
             this.registrationNumber = "default";
-        }else{
+        } else {
             this.registrationNumber = registrationNumber;
         }
         if (transmission == null || transmission.isEmpty() || transmission.isBlank()) {
             this.transmission = "default";
-        }else{
+        } else {
             this.transmission = transmission;
         }
-        if (numberOfSeats == null || numberOfSeats.isEmpty() || numberOfSeats.isBlank()){
+        if (numberOfSeats == null || numberOfSeats.isEmpty() || numberOfSeats.isBlank()) {
             this.numberOfSeats = "default";
-        }else{
+        } else {
             this.numberOfSeats = numberOfSeats;
         }
     }
@@ -116,6 +131,7 @@ public class Car {
     public String getBodyType() {
         return bodyType;
     }
+
     public void setEngineVolume(double engineVolume) {
         this.engineVolume = engineVolume;
     }
@@ -123,6 +139,7 @@ public class Car {
     public String getNumberOfSeats() {
         return numberOfSeats;
     }
+
     public void setColor(String color) {
         this.color = color;
     }
@@ -142,11 +159,14 @@ public class Car {
                 ", Количество мест '" + numberOfSeats + '\'' +
                 '}';
     }
-    void changeTiresToSeasonal(){
-        if ( LocalDate.now().getMonthValue() > 3 && LocalDate.now().getMonthValue() < 11){
+
+    void changeTiresToSeasonal() {
+        if (LocalDate.now().getMonthValue() > 3 && LocalDate.now().getMonthValue() < 11) {
             System.out.println("летняя резина");
-        }else{
-            System.out.println( "зимняя резина");
+        } else {
+            System.out.println("зимняя резина");
         }
     }
 }
+
+
