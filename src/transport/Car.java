@@ -1,3 +1,5 @@
+package transport;
+
 import java.time.LocalDate;
 
 public class Car {
@@ -31,12 +33,12 @@ public class Car {
             if (remoteEngineStart == null || remoteEngineStart.isEmpty() || remoteEngineStart.isBlank()) {
                 this.remoteEngineStart = "default";
             } else {
-                this.remoteEngineStart = remoteEngineStart;
+                this.remoteEngineStart = " Бесключевой доступ ";
             }
             if (keylessEntry == null || keylessEntry.isEmpty() || keylessEntry.isBlank()) {
                 this.keylessEntry = "default";
             } else {
-                this.keylessEntry = keylessEntry;
+                this.keylessEntry = " Удаленный запуск двигателя ";
             }
         }
 
@@ -52,7 +54,7 @@ public class Car {
 
 
     public Car(String brand, String model, String productionCountry, double engineVolume, int productionYear, String color,
-               String transmission, String bodyType, String registrationNumber, String numberOfSeats, String tireType) {
+               String transmission, String bodyType, String registrationNumber, String numberOfSeats, String tireType,Key key) {
 
         if (brand == null || brand.isEmpty() || brand.isBlank()) {
             this.brand = "default";
