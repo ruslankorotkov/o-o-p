@@ -11,11 +11,21 @@ public class Car {
     private final String bodyType;
     private String registrationNumber;
     private final String numberOfSeats;
+    private String tireType;
+
+    public Key getKey() {
+        return key;
+    }
+
+    public void setKey(Key key) {
+        this.key = key;
+    }
+
     private Key key;
 
     public static class Key {
-        private String remoteEngineStart;
-        private String keylessEntry;
+        private final String remoteEngineStart;
+        private final String keylessEntry;
 
         public Key(String remoteEngineStart, String keylessEntry) {
             if (remoteEngineStart == null || remoteEngineStart.isEmpty() || remoteEngineStart.isBlank()) {
@@ -34,20 +44,15 @@ public class Car {
             return remoteEngineStart;
         }
 
-        public void setRemoteEngineStart(String remoteEngineStart) {
-            this.remoteEngineStart = remoteEngineStart;
-        }
-
         public String getKeylessEntry() {
             return keylessEntry;
         }
-
-        public void setKeylessEntry(String keylessEntry) {
-            this.keylessEntry = keylessEntry;
-        }
     }
 
-    public Car(String brand, String model, String productionCountry, double engineVolume, int productionYear, String color, String transmission, String bodyType, String registrationNumber, String numberOfSeats) {
+
+
+    public Car(String brand, String model, String productionCountry, double engineVolume, int productionYear, String color,
+               String transmission, String bodyType, String registrationNumber, String numberOfSeats, String tireType) {
 
         if (brand == null || brand.isEmpty() || brand.isBlank()) {
             this.brand = "default";
@@ -102,6 +107,12 @@ public class Car {
         } else {
             this.numberOfSeats = numberOfSeats;
         }
+        if (LocalDate.now().getMonthValue() > 3 && LocalDate.now().getMonthValue() < 11) {
+            this.tireType = " Летняя резина ";
+        } else {
+            this.tireType = " Зимняя резина ";
+        }
+
     }
 
     public String getBrand() {
@@ -144,9 +155,16 @@ public class Car {
         this.color = color;
     }
 
+    public void setTireType(String tireType) {
+        this.tireType = tireType;
+    }
+    public String getTireType() {
+        return tireType;
+    }
+
     @Override
     public String toString() {
-        return "Car{" +
+        return " Автомобиль {" +
                 " Марка '" + brand + '\'' +
                 ", Модель '" + model + '\'' +
                 ", Объем двигателя в литрах " + engineVolume +
@@ -157,15 +175,9 @@ public class Car {
                 ", Тип кузова '" + bodyType + '\'' +
                 ", Регистрационный номер '" + registrationNumber + '\'' +
                 ", Количество мест '" + numberOfSeats + '\'' +
+                ", Покрышки '" + tireType + '\'' +
+                ", Ключ " + key +
                 '}';
-    }
-
-    void changeTiresToSeasonal() {
-        if (LocalDate.now().getMonthValue() > 3 && LocalDate.now().getMonthValue() < 11) {
-            System.out.println("летняя резина");
-        } else {
-            System.out.println("зимняя резина");
-        }
     }
 }
 
