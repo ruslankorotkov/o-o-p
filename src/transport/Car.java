@@ -182,6 +182,7 @@ public class Car {
                 ", Покрышки '" + tireType + '\'' +
                 ", Ключ " + option +
                 '}';
+
     }
 }
 
