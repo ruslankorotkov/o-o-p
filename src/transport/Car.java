@@ -1,5 +1,4 @@
 package transport;
-
 import java.time.LocalDate;
 
 public class Car {
@@ -15,30 +14,30 @@ public class Car {
     private final String numberOfSeats;
     private String tireType;
 
-    public Key getKey() {
-        return key;
-    }
-
-    public void setKey(Key key) {
-        this.key = key;
-    }
-
-    private Key key;
+    private final Key option;
 
     public static class Key {
-        private final String remoteEngineStart;
-        private final String keylessEntry;
+        @Override
+        public String toString() {
+            return "Key{" +
+                    " опция 1 '" + remoteEngineStart + '\'' +
+                    ", опция 2 '" + keylessEntry + '\'' +
+                    '}';
+        }
+
+        private final  String remoteEngineStart;
+        private final  String keylessEntry;
 
         public Key(String remoteEngineStart, String keylessEntry) {
             if (remoteEngineStart == null || remoteEngineStart.isEmpty() || remoteEngineStart.isBlank()) {
                 this.remoteEngineStart = "default";
             } else {
-                this.remoteEngineStart = " Бесключевой доступ ";
+                this.remoteEngineStart = "Бесключевой доступ";
             }
             if (keylessEntry == null || keylessEntry.isEmpty() || keylessEntry.isBlank()) {
                 this.keylessEntry = "default";
             } else {
-                this.keylessEntry = " Удаленный запуск двигателя ";
+                this.keylessEntry = "Удаленный запуск двигателя";
             }
         }
 
@@ -53,8 +52,9 @@ public class Car {
 
 
 
+
     public Car(String brand, String model, String productionCountry, double engineVolume, int productionYear, String color,
-               String transmission, String bodyType, String registrationNumber, String numberOfSeats, String tireType,Key key) {
+               String transmission, String bodyType, String registrationNumber, String numberOfSeats, String tireType, Key option) {
 
         if (brand == null || brand.isEmpty() || brand.isBlank()) {
             this.brand = "default";
@@ -114,6 +114,7 @@ public class Car {
         } else {
             this.tireType = " Зимняя резина ";
         }
+            this.option = option;
 
     }
 
@@ -163,6 +164,9 @@ public class Car {
     public String getTireType() {
         return tireType;
     }
+    public Key getOption() {
+        return this.option;
+    }
 
     @Override
     public String toString() {
@@ -178,7 +182,7 @@ public class Car {
                 ", Регистрационный номер '" + registrationNumber + '\'' +
                 ", Количество мест '" + numberOfSeats + '\'' +
                 ", Покрышки '" + tireType + '\'' +
-                ", Ключ " + key +
+                ", Ключ " + option +
                 '}';
     }
 }
