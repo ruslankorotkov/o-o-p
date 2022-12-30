@@ -1,4 +1,5 @@
 package transport;
+
 import java.time.LocalDate;
 
 public class Car {
@@ -13,20 +14,19 @@ public class Car {
     private String registrationNumber;
     private final String numberOfSeats;
     private String tireType;
-
     private final Key option;
 
     public static class Key {
         @Override
         public String toString() {
             return "Key{" +
-                    " опция 1 '" + remoteEngineStart + '\'' +
-                    ", опция 2 '" + keylessEntry + '\'' +
+                    " опция 1= '" + remoteEngineStart + '\'' +
+                    ", опция 2= '" + keylessEntry + '\'' +
                     '}';
         }
 
-        private final  String remoteEngineStart;
-        private final  String keylessEntry;
+        private final String remoteEngineStart;
+        private final String keylessEntry;
 
         public Key(String remoteEngineStart, String keylessEntry) {
             if (remoteEngineStart == null || remoteEngineStart.isEmpty() || remoteEngineStart.isBlank()) {
@@ -49,9 +49,6 @@ public class Car {
             return keylessEntry;
         }
     }
-
-
-
 
     public Car(String brand, String model, String productionCountry, double engineVolume, int productionYear, String color,
                String transmission, String bodyType, String registrationNumber, String numberOfSeats, String tireType, Key option) {
@@ -114,8 +111,7 @@ public class Car {
         } else {
             this.tireType = " Зимняя резина ";
         }
-            this.option = option;
-
+        this.option = option;
     }
 
     public String getBrand() {
@@ -161,9 +157,11 @@ public class Car {
     public void setTireType(String tireType) {
         this.tireType = tireType;
     }
+
     public String getTireType() {
         return tireType;
     }
+
     public Key getOption() {
         return this.option;
     }
